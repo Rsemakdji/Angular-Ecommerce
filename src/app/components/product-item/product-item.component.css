@@ -1,0 +1,25 @@
+.product-item:hover{
+    background-color: black;
+    color: azure;
+}
+.product-item{
+    align-items: center;
+    text-align: center;
+    border: 0.1px solid azure;
+    width: 400px;
+    height: 540px;
+    color: black;
+    cursor: pointer;
+
+    
+}
+.product-item .product-price{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+}
+.product-item .product-image img{
+    width: 400px;
+    height: 400px;
+}
