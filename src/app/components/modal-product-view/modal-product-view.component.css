@@ -29,3 +29,9 @@
     text-align: center;
     color: black;
 }
+
+@media screen and (max-width: 660px){
+    .modal-product-view-container{
+        width: 95%;
+    }
+}
