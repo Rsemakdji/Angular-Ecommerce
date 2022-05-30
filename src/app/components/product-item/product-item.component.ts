@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Product } from 'src/app/models/product';
+
 
 @Component({
   selector: 'app-product-item',
@@ -10,17 +11,22 @@ export class ProductItemComponent implements OnInit {
 
   @Input() products: Product | undefined
 
+  @Output() deleteProductItem: EventEmitter<Product> = new EventEmitter<Product>()
+
+  @Output() displayProductViewModal: EventEmitter<Product> = new EventEmitter<Product>()
+
   constructor() { }
 
   ngOnInit(): void {
-    console.log( "-- PRODUCT ITEM --")
-    console.log(this.products)
+    
   }
-  handleClickProduct(products: Product | undefined){
-    console.log(this.products); 
+  handleClickProduct(product: Product | undefined){
+   //console.log(this.product); 
+   this.displayProductViewModal.emit(product)
    }
-  deleteProduct(products: Product | undefined){
-    console.log(this.products); 
+  deleteProduct(product: Product | undefined){
+   // console.log(this.products); 
+   // this.deleteProductItem.emit(product)
    }
    
 }

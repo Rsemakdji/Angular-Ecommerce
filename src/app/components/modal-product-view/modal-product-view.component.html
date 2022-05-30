@@ -1,0 +1,28 @@
+<div class="modal-product-view">
+    <div class="overlay"></div>
+    <div class="modal-product-view-container flex">
+        <div class="modal-product-view-image flex-1">
+            <img
+            [src]="product ? product.imageUrl[0] : ''"
+            [alt]="product?.name">
+        </div>
+        <div class="modal-product-view-details flex-1 aic jcc column">
+            <div class="modal-product-view-details-name">
+                <h2>{{ product?.name }}</h2>
+            </div>
+            <div class="modal-product-view-details-description">
+                <h3>{{ product?.description }}</h3>
+            </div>
+            <div class="modal-product-view-details-price">
+                <h3>{{ (product?.regular_price || 0) /100 }}</h3>
+                <del>
+                    <h3>{{ (product?.sold_price || 0) /100 }}</h3>
+                </del>
+            </div>
+            <button 
+            class="btn-btn-close"
+            (click)="handleCloseModal()"
+            >X</button>
+        </div>
+    </div>
+</div>
