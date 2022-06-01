@@ -14,9 +14,9 @@
                 <h3>{{ product?.description }}</h3>
             </div>
             <div class="modal-product-view-details-price">
-                <h3>{{ (product?.regular_price || 0) /100 }}</h3>
+                <h3>{{ (product?.sold_price || 0) /100 }}</h3>
                 <del>
-                    <h3>{{ (product?.sold_price || 0) /100 }}</h3>
+                    <h3>{{ (product?.regular_price || 0) /100 }}</h3>
                 </del>
             </div>
             <button 

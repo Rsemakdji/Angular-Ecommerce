@@ -9,6 +9,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductComponent } from './components/product/product.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { ModalProductViewComponent } from './components/modal-product-view/modal-product-view.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ModalProductViewComponent } from './components/modal-product-view/modal
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,15 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  data: Number | undefined
+  seconde: Number | undefined
+  secondSub: Subscription | undefined
+
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-  }
-
+//     this.productService.getNumber()
+//     .subscribe(
+//     (value)=>{
+//       this.data = value
+//     }
+//   )
+// }
+this.secondSub = this.productService.getSecond()
+.subscribe({
+  next: (value : Number)=>{
+    this.seconde = value
+  },
+  error: (error: any)=>{
+    console.log(error)
+  },
+  complete: ()=>{
+    console.log("complete")
+  },
+})
+}
+ngOnDestroy(): void{
+  this.secondSub?.unsubscribe();
+}
 }
