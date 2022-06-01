@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
 import { interval, Observable, of } from 'rxjs';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @Injectable({
@@ -8,83 +9,28 @@ import { interval, Observable, of } from 'rxjs';
 })
 export class ProductService {
 
- private products: Product[] = [
-  {
-    _id: '1',
-    name: "voiture bleu",
-    description: "voiture bleu sportive",
-    category: ['voiture homme', 'voiture femme', 'voiture sportive'],
-    imageUrl: [
-      'assets/images/products/lamborghini.jpg',
-    ],
-    sold_price: 10499,
-    regular_price: 20099,
-    created_at: new Date()
-  },
-  {
-    _id: '2',
-    name: "Mercedes",
-    description: "voiture rouge sportive",
-    category: ['voiture homme', 'voiture sportive'],
-    imageUrl: [
-      'assets/images/products/mercedes.jpg',
-    ],
-    sold_price: 30219,
-    regular_price: 80099,
-    created_at: new Date()
-  },
-  {
-    _id: '3',
-    name: "voiture de 2054",
-    description: "voiture inexistante",
-    category: ['voiture homme', 'voiture femme', 'voiture sportive'],
-    imageUrl: [
-      'assets/images/products/voiture-futur.jpg',
-    ],
-    sold_price: 66499,
-    regular_price: 99099,
-    created_at: new Date()
-  },
-  {
-    _id: '4',
-    name: "muscle americaine",
-    description: "voiture sportive",
-    category: ['voiture femme', 'voiture sportive'],
-    imageUrl: [
-      'assets/images/products/muscleA.jpg',
-    ],
-    sold_price: 55499,
-    regular_price: 55099,
-    created_at: new Date()
-  },
-  {
-    _id: '5',
-    name: "voiture de batman",
-    description: "voiture  pour combattre le crime",
-    category: ['voiture femme', 'voiture sportive'],
-    imageUrl: [
-      'assets/images/products/batmobile.jpg',
-    ],
-    sold_price: 5499,
-    regular_price: 9099,
-    created_at: new Date()
-  },
-
-]
+ private products: Product[] = []
+ private urlApi: string = 'http://localhost:4200/assets/api/products.json'
 
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
-  getProducts(): Promise<Product[]>{
-    return new Promise((resolve, reject) => {
-      if(this.products.length){
-        resolve(this.products)
-      } else {
-        reject([])
-      }
-    })
+  // getProducts(): Promise<Product[]>{
+  //   return new Promise((resolve, reject) => {
+  //     if(this.products.length){
+  //       resolve(this.products)
+  //     } else {
+  //       reject([])
+  //     }
+  //   })
     
-  }
+  // }
+
+  getProducts(): Observable<Product[]> { 
+    
+  return this.http.get<Product[]>(this.urlApi)
+
+}
 
   getNumber(): Observable<Number> {
     return of(455)
