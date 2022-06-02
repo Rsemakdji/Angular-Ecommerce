@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +13,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   data: Number | undefined
   seconde: Number | undefined
   secondSub: Subscription | undefined
+  siteName: string = environment.SiteName
 
   constructor(private productService: ProductService) { }
 

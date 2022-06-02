@@ -1,0 +1,24 @@
+<div class="signup signin">
+    <div class="form-inline firstname">
+        <input 
+        type="text" 
+        name="firstname" 
+        placeholder="your name"
+        [(ngModel)] = "firstname"
+        >
+        
+        <button class="btn" (click)="handleSave()">submit</button>
+        <div class="text">
+            <strong>{{firstname}}</strong>
+            <br>
+            <strong>{{lastname}}</strong>
+        </div>
+        <div class="names">
+            <ul>
+                <li class="flex aic " *ngFor="let name of names">{{ name }}
+                    <button class="btn" (click)="handleDelete()">delete</button>
+                </li>
+            </ul>
+        </div>
+    </div>  
+</div>
